@@ -29,17 +29,17 @@ for(int i = 0 ; i < line.length() && correctNum ; i++){
 // print the results
 if(s.isEmpty() && correctNum == true){
    System.out.println("There is the correct number of parenthesis in the expression");
-   Stack number = new Stack();
-   Stack operators = new Stack();
+   Stack<Double> number = new Stack();
+   Stack<String> operators = new Stack();
    for(int j = 0 ; j < line.length() ; j++){
-        char o = line.charAt(j);
-        if(o == '%' || o ==  '/' || o == '*' || o == '+' || o == '-' )
+        String o = line.substring(j , j+1);
+        if(o.equals("%") || o.equals("/") || o.equals("*") || o.equals("+") || o.equals("-"))
             operators.push(o);
-        else if(o == ')')
-            System.out.println("");
-            //evaluate expression with 2 pops from number and one pop from operator
+        else if(o.equals(")")){
+            String op = operators.pop();
+        }
         else
-            number.push(line.charAt(j));
+            number.push(Double.parseDouble(line.substring(j, j+1)));
    }
     System.out.println(number.pop());
 }
